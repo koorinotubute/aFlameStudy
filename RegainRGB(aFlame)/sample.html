@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+
+    <!-- my style -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> -->
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-assets>
+      <img id="brick" src="img/red_brick_diff_2k.jpg" />
+      <img id="brick_NRM" src="img/red_brick_nor_gl_2k.jpg" />
+      <img id="brick_NRMa" src="img/red_brick_nor_gl_2k.jpg" />
+      <img id="floor" src="img/dry_riverbed_rock_diff_2k.jpg" />
+      <img id="floor_NRM" src="img/dry_riverbed_rock_nor_gl_2k.jpg" />
+      <img id="magicsole" src="img/Magic Sole.jpg" />
+      <img id="sky" src="img/rogland_clear_night_8k.jpg" />
+      <a-asset-item id="tsunocat" src="model/tsunoCat.glb"></a-asset-item>
+    </a-assets>
+
+    <a-scene shadow="type:pcf">
+      <!--
+                <a-box></a-box>
+                <a-sphere></sphere>
+                <a-cylinder><a-cylinder>
+                <a-plane></plane>
+                <a-sky></sky>
+            -->
+      <!--
+                width=幅/height=高さ/depth=奥行き;
+                rotation=回転("x y z");
+                color=色(#??????);
+                potion=位置("x y z");
+                radius=直径;
+            -->
+      <a-box
+        width="1"
+        height="300"
+        depth="500"
+        scale="1 1 1"
+        position="-14.7 150 -4.5"
+        rotation="0 0 0"
+        color="#252525"
+        repeat="50 30"
+        normal-map="#brick_NRM"
+        normal-texture-repeat="50 30"
+        normal-scale="4 4"
+        roughness="1"
+        rotate="180 0 0"
+      >
+      </a-box>
+
+      <a-box
+        width="1"
+        height="300"
+        depth="500"
+        scale="1 1 1"
+        position="14.7 150 -4.5"
+        rotation="0 0 0"
+        color="#252525"
+        repeat="50 30"
+        normal-map="#brick_NRMa"
+        normal-texture-repeat="50 30"
+        normal-scale="4 4"
+        roughness="1"
+      >
+      </a-box>
+
+      <!--entityで囲んでグループ化-->
+      <a-entity
+        rotation="5 0 0"
+        position="0 1 -2.5"
+        shadow="cast: true; receive: true"
+      >
+        <a-entity
+          animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 3800; easing: linear"
+        >
+          <a-cylinder
+            animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 1200; easing: linear"
+            position="-1.5 0 0"
+            radius="0.13"
+            height="1"
+            scale="3 0.07 3"
+            segments-radial="5"
+            segments-height="1"
+            open-ended="true"
+            color="#FFC65D"
+            side="double"
+            material="color:black; roughness:0.13; shader:flat"
+          ></a-cylinder>
+
+          <a-circle
+            position="0 0 0"
+            color="black"
+            radius="1"
+            side="double"
+            rotation="90 0 0"
+          ></a-circle>
+
+          <a-sphere
+            position="0 0 0"
+            radius="0.1"
+            material="color:black;
+                     roughness:0.13;
+                     shader:standard"
+          >
+          </a-sphere>
+        </a-entity>
+      </a-entity>
+
+      <!--GLTFファイルを表示-->
+      <a-entity
+        gltf-model="#tsunocat"
+        position="0 1.1 -2"
+        rotation="5 0 0"
+        animation-mixer="timeScale: 0.5"
+        scale="0.05 0.05 0.05"
+        castShadow="true"
+        receiveShadow="true"
+      ></a-entity>
+
+      <!--entityで囲んでグループ化2-->
+      <a-entity
+        rotation="20 0 0"
+        position="0 5 -20"
+        scale="9 9 9"
+        shadow="cast: true; receive: true"
+      >
+        <a-entity
+          animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 2600; easing: linear"
+        >
+          <a-cylinder
+            animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 1200; easing: linear"
+            position="-1.2 0 0"
+            radius="0.05"
+            height="1"
+            scale="3 0.01 3"
+            segments-radial="5"
+            segments-height="1"
+            open-ended="true"
+            color="#FFC65D"
+            side="double"
+            material="color:black; roughness:0.13; shader:flat"
+          ></a-cylinder>
+
+          <a-circle
+            position="0 0 0"
+            color="black"
+            radius="1"
+            side="double"
+            rotation="90 0 0"
+          ></a-circle>
+        </a-entity>
+      </a-entity>
+
+      <!--GLTFファイルを表示2-->
+      <a-entity
+        gltf-model="#tsunocat"
+        position="0 5 -17.5"
+        rotation="20 0 0"
+        animation-mixer="timeScale: 0.5"
+        scale="0.45 0.45 0.45"
+        castShadow="true"
+        receiveShadow="true"
+      ></a-entity>
+
+      <a-entity
+        animation="property: rotation; from: 30 0 0; to: 30 0 -360; loop: true; dur: 1000; easing: linear"
+        position="-6.6 25.5 -19"
+      >
+        <a-cylinder
+          rotation="90 0 0"
+          radius="0.25"
+          height="1"
+          scale="15 0.35 15"
+          segments-radial="5"
+          segments-height="1"
+          open-ended="true"
+          color="#FFC65D"
+          side="double"
+          material="color:red; roughness:0.13; shader:flat"
+        ></a-cylinder>
+        <a-sphere
+          radius="0.75"
+          material="color:red;
+                 roughness:0.13;
+                 shader:flat"
+        >
+        </a-sphere>
+      </a-entity>
+
+      <a-entity
+        animation="property: rotation; from: 30 0 0; to: 30 0 -360; loop: true; dur: 1200; easing: linear"
+        position="-5.5 13.5 -22"
+      >
+        <a-cylinder
+          rotation="90 0 0"
+          radius="0.25"
+          height="1"
+          scale="15 0.2 15"
+          segments-radial="5"
+          segments-height="1"
+          open-ended="true"
+          color="#FFC65D"
+          side="double"
+          material="color:green; roughness:0.13; shader:flat"
+        ></a-cylinder>
+        <a-sphere
+          radius="0.75"
+          material="color:green;
+               roughness:0.13;
+               shader:flat"
+        >
+        </a-sphere>
+      </a-entity>
+
+      <a-entity
+        animation="property: rotation; from: 30 0 0; to: 30 0 -360; loop: true; dur: 1200; easing: linear"
+        position="7 19.5 -22"
+      >
+        <a-cylinder
+          rotation="90 0 0"
+          radius="0.25"
+          height="1"
+          scale="15 0.2 15"
+          segments-radial="5"
+          segments-height="1"
+          open-ended="true"
+          color="#FFC65D"
+          side="double"
+          material="color:blue; roughness:0.13; shader:flat"
+        ></a-cylinder>
+        <a-sphere
+          radius="0.75"
+          material="color:blue;
+               roughness:0.13;
+               shader:flat"
+        >
+        </a-sphere>
+      </a-entity>
+
+      <!--カーブをかけて画像を表示-->
+      <a-curvedimage
+        src="#magicsole"
+        theta-length="50"
+        theta-start="160"
+        radius="5"
+        height="2.5"
+        position="52 6 7.5"
+        scale="4.5 4.5 4.5"
+      >
+      </a-curvedimage>
+
+      <!--そのまま画像を表示-->
+      <a-image src="#magicsole" position="30 5 -12" scale="16 9 0"></a-image>
+
+      <!--カメラ制御-->
+      <a-entity position="0 0.5 3"><a-camera></a-camera> </a-entity>
+
+      <!--ライト制御-->
+      <!--
+      <a-light
+        type="point"
+        position="2 10da 0"
+        intensity="1"
+        castShadow="true"
+      ></a-light>
+      -->
+
+      <!--空を表示-->
+      <a-sky src="#sky" color="black"></a-sky>
+
+      <!--地面を表示-->
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        scale="10000 10000 1"
+        material="
+                color: #adb5bd;
+                repeat: 2000 2000;
+                normal-map: #floor_NRM;
+                normal-texture-repeat: 2000 2000"
+      ></a-plane>
+    </a-scene>
+
+    <!-- audio -->
+    <!--<audio  id="se-jump" src="audio/〜〜〜〜〜〜〜"></audio>-->
+
+    <!-- my script -->
+    <!--<script src="js/script.js"></script>-->
+  </body>
+</html>
