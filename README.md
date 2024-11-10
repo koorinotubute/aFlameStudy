@@ -1,2 +1,2 @@
 # aFlameStudy
-[Visit a Site](https://koorinotubute.github.io/aFlameStudy/)
+[Visit a site](https://koorinotubute.github.io/aFlameStudy/)
